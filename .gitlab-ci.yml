@@ -31,7 +31,7 @@ doxygen:
             - build/docs/html
             
 build-gcc7:
-    image: lasote/conangcc7
+    image: conanio/gcc9
     before_script:
         - sudo apt update
         - sudo apt install gcovr
@@ -48,7 +48,7 @@ build-gcc7:
             - build/coverage/
             
 deploy:
-    image: lasote/conangcc7
+    image: conanio/gcc9
     before_script:
         - sudo apt update
         - sudo apt install -y --no-install-recommends curl
