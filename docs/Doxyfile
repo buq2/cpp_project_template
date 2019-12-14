@@ -1,0 +1,4 @@
+PROJECT_NAME = proj-documentation
+FILE_PATTERNS = *.h *.hh *.hpp *.dox *.py *.proto .m
+INPUT = ../src ./
+OUTPUT_DIRECTORY = documentation

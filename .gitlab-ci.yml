@@ -5,18 +5,7 @@ cppcheck:
         - apt install -y --no-install-recommends cppcheck
         - cppcheck --version
     script:
-        - cppcheck src/*.cpp --verbose --enable=all --inconclusive --
-
-clang-tidy:
-    image: base/archlinux:2018.09.01
-    variables:
-        CC: clang
-        CXX: clang++
-    before_script:
-        - pacman -Syu --needed --noconfirm clang-tools-extra
-        - clang-tidy --version
-    script:
-        - clang-tidy -warnings-as-errors="*" -checks="-*,clang-analyze"
+        - cppcheck src/ --verbose --enable=all --inconclusive
 
 doxygen:
     image: alpine:3.7
@@ -25,16 +14,17 @@ doxygen:
         - apk add --no-cache -t required_apks doxygen
         - mkdir -p build/docs
     script:
-        - doxygen docs/Doxygile
+        - doxygen docs/Doxyfile
+        - mv documentation/html/ public/
     artifacts:
         paths:
-            - build/docs/html
+            - public/
             
 build-gcc7:
     image: conanio/gcc9
     before_script:
         - sudo apt update
-        - sudo apt install gcovr
+        - sudo apt install -y --no-install-recommends gcovr
     script:
         - mkdir -b build
         - cd build
