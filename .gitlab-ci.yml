@@ -19,7 +19,7 @@ test:
     image: conanio/gcc9
     before_script:
         - sudo apt update
-        - sudo apt install -y --no-install-recommends valgrind
+        - sudo apt install -y --no-install-recommends valgrind gcovr=4.1-2
         - pip3 install gcovr==4.1
     script:
         - mkdir build
