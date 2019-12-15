@@ -1,10 +1,5 @@
-stages:
-    - test
-    - cppcheck
-    - doxygen
-    - build-package
-
 test:
+    stage: test
     image: conanio/gcc9
     before_script:
         - sudo apt update
@@ -18,6 +13,7 @@ test:
         - ctest -T memcheck
 
 cppcheck:
+    stage: test
     image: ubuntu:bionic
     before_script:
         - apt update
@@ -27,6 +23,7 @@ cppcheck:
         - cppcheck src/ --verbose --enable=all --inconclusive
 
 doxygen:
+    stage: deploy
     image: alpine:3.7
     before_script:
         - apk update
@@ -40,6 +37,7 @@ doxygen:
             - public/
 
 build-package:
+    stage: deploy
     image: conanio/gcc9
     before_script:
         - sudo apt update
