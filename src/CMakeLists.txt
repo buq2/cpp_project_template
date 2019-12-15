@@ -1,7 +1,7 @@
 add_library(algo
     algo.hh algo.cpp)
 set_target_properties(algo PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
+    INTERFACE_INCLUDE_DIRECTORIES "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
 )
 
 add_executable(main

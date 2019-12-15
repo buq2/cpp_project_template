@@ -24,15 +24,14 @@ build-gcc7:
     image: conanio/gcc9
     before_script:
         - sudo apt update
-        - sudo apt install -y --no-install-recommends gcovr
+        - sudo apt install -y --no-install-recommends gcovr valgrind
     script:
         - mkdir build
         - cd build
         - cmake .. -DCMAKE_BUILD_TYPE=Debug
         - cmake --build .
         - cmake --build . --target test
-        - cmake --build . --target memcheck
-        - cmake --build . --target coverage
+        - ctest -T memcheck
     artifacts:
         paths:
             - build/coverage/
