@@ -1,3 +1,19 @@
+stages:
+  - analysis
+  - test
+  - docs
+  - deploy
+  
+cppcheck:
+    stage: analysis
+    image: ubuntu:bionic
+    before_script:
+        - apt update
+        - apt install -y --no-install-recommends cppcheck
+        - cppcheck --version
+    script:
+        - cppcheck src/ --verbose --enable=all --inconclusive --language=c++ --error-exitcode=1
+
 test:
     stage: test
     image: conanio/gcc9
@@ -16,18 +32,8 @@ test:
       paths:
         - build/coverage/
 
-cppcheck:
-    stage: test
-    image: ubuntu:bionic
-    before_script:
-        - apt update
-        - apt install -y --no-install-recommends cppcheck
-        - cppcheck --version
-    script:
-        - cppcheck src/ --verbose --enable=all --inconclusive
-
 doxygen:
-    stage: deploy
+    stage: docs
     image: alpine:3.7
     before_script:
         - apk update
