@@ -32,9 +32,6 @@ build-gcc7:
         - cmake --build .
         - cmake --build . --target test
         - ctest -T memcheck
-    artifacts:
-        paths:
-            - build/coverage/
             
 deploy:
     image: conanio/gcc9

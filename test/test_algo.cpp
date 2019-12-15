@@ -6,4 +6,5 @@
 TEST_CASE("Algo test", "[algo]") {
   Algo algo;
   REQUIRE(algo.Get() == 1);
+  REQUIRE(algo.Get() == 0);
 }
