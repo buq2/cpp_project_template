@@ -54,11 +54,11 @@ build-package:
         - sudo apt update
         - sudo apt install -y --no-install-recommends curl
     script:
-        - mkdir build
-        - cd build
+        - mkdir build-release
+        - cd build-release
         - cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF
         - cmake --build .
         - cpack -G DEB .
     artifacts:
         paths:
-            - build/*.deb
+            - build-release/*.deb
