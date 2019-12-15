@@ -7,6 +7,10 @@ enable_testing()
 # Run conan install automatically, or display warning if conan is not installed
 include(cmake/conan_config.cmake)
 include(cmake/cpack_config.cmake)
+option(WITH_COVERAGE "Test with code coverage" FALSE)
+IF (WITH_COVERAGE)
+    include(cmake/coverage_config.cmake)
+ENDIF()
 set(CTEST_MEMORYCHECK_COMMAND valgrind)
 
 add_subdirectory(src)

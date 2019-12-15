@@ -14,6 +14,7 @@ cmake >3.5
 
 ```
 conan
+gcov
 ```
 
 ## Additional requirements if conan is not installed

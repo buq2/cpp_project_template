@@ -7,10 +7,14 @@ test:
     script:
         - mkdir build
         - cd build
-        - cmake .. -DCMAKE_BUILD_TYPE=Debug
+        - cmake .. -DCMAKE_BUILD_TYPE=Debug -DWITH_COVERAGE=ON
         - cmake --build .
         - cmake --build . --target test
         - ctest -T memcheck
+        - cmake --build . --target coverage
+    artifacts:
+      paths:
+        - build/coverage/
 
 cppcheck:
     stage: test
