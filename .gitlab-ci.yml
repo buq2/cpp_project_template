@@ -1,3 +1,22 @@
+stages:
+    - test
+    - cppcheck
+    - doxygen
+    - build-package
+
+test:
+    image: conanio/gcc9
+    before_script:
+        - sudo apt update
+        - sudo apt install -y --no-install-recommends gcovr valgrind
+    script:
+        - mkdir build
+        - cd build
+        - cmake .. -DCMAKE_BUILD_TYPE=Debug
+        - cmake --build .
+        - cmake --build . --target test
+        - ctest -T memcheck
+
 cppcheck:
     image: ubuntu:bionic
     before_script:
@@ -19,20 +38,7 @@ doxygen:
     artifacts:
         paths:
             - public/
-            
-test:
-    image: conanio/gcc9
-    before_script:
-        - sudo apt update
-        - sudo apt install -y --no-install-recommends gcovr valgrind
-    script:
-        - mkdir build
-        - cd build
-        - cmake .. -DCMAKE_BUILD_TYPE=Debug
-        - cmake --build .
-        - cmake --build . --target test
-        - ctest -T memcheck
-            
+
 build-package:
     image: conanio/gcc9
     before_script:
