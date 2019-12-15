@@ -2,7 +2,14 @@
 
 This is an example C++ project with Gitlab integration.
 
-# Build instructions
+# Build and run with Docker
+
+```
+docker build . --tag=cppproject
+docker run cppproject
+```
+
+# Build instructions from source
 
 ## Minimal requirements
 
@@ -21,4 +28,16 @@ gcov
 
 ```
 catch2
+```
+
+
+## Building
+
+```
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF
+cmake --build .
+cpack -G DEB .
+sudo dpkg -i *.deb
 ```

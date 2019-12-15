@@ -12,5 +12,5 @@ RUN sudo chmod -R 777 . && \
     cmake --build . && \
     cpack -G DEB . && \
     sudo dpkg -i *.deb && \
-    dpkg-deb -c *.deb
+    sudo rm -rf ${SOURCEDIR}
 ENTRYPOINT ["main_application"]
