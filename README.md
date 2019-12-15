@@ -6,7 +6,7 @@ This is an example C++ project with Gitlab integration.
 
 ```
 docker build . --tag=cppproject
-docker run cppproject
+docker run --rm cppproject
 ```
 
 # Build instructions from source
