@@ -14,4 +14,8 @@ ENDIF()
 set(CTEST_MEMORYCHECK_COMMAND valgrind)
 
 add_subdirectory(src)
-add_subdirectory(test)
+
+option(BUILD_TESTS "Test with code coverage" TRUE)
+IF (BUILD_TESTS)
+    add_subdirectory(test)
+ENDIF()

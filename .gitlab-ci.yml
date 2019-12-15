@@ -50,9 +50,6 @@ doxygen:
 build-package:
     stage: deploy
     image: conanio/gcc9
-    before_script:
-        - sudo apt update
-        - sudo apt install -y --no-install-recommends curl
     script:
         - mkdir build-release
         - cd build-release

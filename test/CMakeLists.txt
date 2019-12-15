@@ -13,3 +13,4 @@ ENDIF()
 include(CTest)
 include(ParseAndAddCatchTests)
 ParseAndAddCatchTests(test_algo)
+
