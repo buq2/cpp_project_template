@@ -20,7 +20,7 @@ doxygen:
         paths:
             - public/
             
-build-gcc7:
+test:
     image: conanio/gcc9
     before_script:
         - sudo apt update
@@ -33,7 +33,7 @@ build-gcc7:
         - cmake --build . --target test
         - ctest -T memcheck
             
-deploy:
+build-package:
     image: conanio/gcc9
     before_script:
         - sudo apt update
