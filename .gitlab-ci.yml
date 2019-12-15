@@ -20,7 +20,7 @@ test:
     before_script:
         - sudo apt update
         - sudo apt install -y --no-install-recommends valgrind gcovr=4.1-2
-        - pip3 install gcovr==4.1
+        - pip3 install --user gcovr==4.1
     script:
         - mkdir build
         - cd build
