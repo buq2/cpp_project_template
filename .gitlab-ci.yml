@@ -12,7 +12,7 @@ cppcheck:
         - apt install -y --no-install-recommends cppcheck
         - cppcheck --version
     script:
-        - cppcheck src/ --verbose --enable=all --inconclusive --language=c++ --error-exitcode=1
+        - cppcheck src/ --verbose --enable=all --inconclusive --language=c++ --suppress=missingIncludeSystem --error-exitcode=1
 
 test:
     stage: test

@@ -3,5 +3,5 @@
 class Algo {
 public:
   Algo();
-  int Get() { return 1; }
+  static int Get() { return 1; }
 };
